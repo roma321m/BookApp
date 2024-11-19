@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">BookApp</string>
+
+    <!-- Book List Screen -->
+    <string name="search__bar_placeholder">Search</string>
+    <string name="search_bar_close_button">Clear search</string>
+    <string name="tab_title_search">Search Results</string>
+    <string name="tab_title_favorites">Favorites</string>
+    <string name="no_search_results">Oops, there are not any books for you search query</string>
+    <string name="no_favorite_books">You don't have any favorite books</string>
+</resources>
