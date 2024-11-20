@@ -5,6 +5,7 @@ import com.roman.bookapp.book.data.network.RemoteBookDataSource
 import com.roman.bookapp.book.data.repository.BookRepository
 import com.roman.bookapp.book.domain.IBookRepository
 import com.roman.bookapp.book.presentation.book_list.BookListViewModel
+import com.roman.bookapp.book.presentation.SelectedBookViewModel
 import com.roman.bookapp.core.data.HttpClientFactory
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
@@ -20,4 +21,5 @@ val sharedModule = module {
     singleOf(::BookRepository).bind<IBookRepository>()
 
     viewModelOf(::BookListViewModel)
+    viewModelOf(::SelectedBookViewModel)
 }

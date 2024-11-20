@@ -31,42 +31,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import bookapp.composeapp.generated.resources.Res
 import bookapp.composeapp.generated.resources.no_favorite_books
 import bookapp.composeapp.generated.resources.no_search_results
 import bookapp.composeapp.generated.resources.tab_title_favorites
 import bookapp.composeapp.generated.resources.tab_title_search
-import com.roman.bookapp.book.domain.Book
 import com.roman.bookapp.book.presentation.book_list.components.BookListView
 import com.roman.bookapp.book.presentation.book_list.components.BookSearchBarView
 import com.roman.bookapp.core.presentation.DarkBlue
 import com.roman.bookapp.core.presentation.DesertWhite
 import com.roman.bookapp.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
-
-
-@Composable
-fun BookListScreenRoot(
-    viewModel: BookListViewModel = koinViewModel(),
-    onBookClick: (Book) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val uiState = viewModel.state.collectAsStateWithLifecycle()
-
-    BookListScreenView(
-        uiState = uiState.value,
-        onAction = {
-            when (it) {
-                is BookListAction.OnBookClick -> onBookClick(it.book)
-                else -> Unit
-            }
-            viewModel.onAction(it)
-        },
-        modifier = modifier,
-    )
-}
 
 
 @Composable
