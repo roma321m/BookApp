@@ -9,4 +9,12 @@
     <string name="tab_title_favorites">Favorites</string>
     <string name="no_search_results">Oops, there are not any books for you search query</string>
     <string name="no_favorite_books">You don't have any favorite books</string>
+
+    <!-- Error Messages -->
+    <string name="error_no_storage_access">No storage access</string>
+    <string name="error_no_storage_space">No storage space</string>
+    <string name="error_request_timeout">Request timeout</string>
+    <string name="error_no_internet_connection">No internet connection</string>
+    <string name="too_many_requests">Too many requests</string>
+    <string name="error_other">Something went wrong</string>
 </resources>
