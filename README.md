@@ -1,14 +1,37 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+# bookApp
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+A simple Android application for managing your book collection.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Features
 
+* Add new books to your library
+* View details of existing books
+* Search for books by title or author
+* Mark books as read or unread
+* Organize books into categories
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Screenshots
+
+(Include some screenshots of your app here)
+
+## Getting Started
+
+1. Clone the repository: `git clone https://github.com/roma321m/BookApp`
+2. Open the project in Android Studio.
+3. Build and run the app on your device or emulator.
+
+## Built With
+
+* Kotlin - Programming language
+* Jetpack Compose - UI toolkit
+* Room - Database library
+* ViewModel - Architecture component
+* Coroutines - Asynchronous programming
+
+## Credit
+
+Philipp Lackner: https://www.youtube.com/watch?v=WT9-4DXUqsM
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
