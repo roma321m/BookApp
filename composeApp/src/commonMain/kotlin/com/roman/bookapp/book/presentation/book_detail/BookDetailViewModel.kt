@@ -11,6 +11,8 @@ import com.roman.bookapp.core.domain.onSuccess
 import com.roman.bookapp.navigation.Route
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -32,6 +34,7 @@ class BookDetailViewModel(
     val state = _state
         .onStart {
             fetchBookDetails()
+            observeFavoriteStatus()
         }
         .stateIn(
             viewModelScope,
@@ -57,12 +60,33 @@ class BookDetailViewModel(
         }
     }
 
-    private fun onFavoriteClick() {
+    private fun onFavoriteClick() = viewModelScope.launch {
         println("$TAG onFavoriteClick")
+
+        if (state.value.isFavorite) {
+            bookRepository.deleteFromFavorite(bookId)
+        } else {
+            state.value.book?.let {
+                bookRepository.markAsFavorite(it)
+            }
+        }
     }
 
     private fun onBackClick() {
         println("$TAG onBackClick")
+    }
+
+    private fun observeFavoriteStatus() {
+        println("$TAG observeFavoriteState")
+        bookRepository
+            .isBookFavorite(bookId)
+            .onEach { isFavorite ->
+                println("$TAG observeFavoriteState isFavorite: $isFavorite")
+                _state.update {
+                    it.copy(isFavorite = isFavorite)
+                }
+            }
+            .launchIn(viewModelScope)
     }
 
     private fun fetchBookDetails() = viewModelScope.launch {

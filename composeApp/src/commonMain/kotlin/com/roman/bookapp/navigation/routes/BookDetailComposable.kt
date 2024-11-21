@@ -25,7 +25,6 @@ fun NavGraphBuilder.bookDetailComposable(
             NavigationAnimation.slideInFrom(HorizontalAnimationDirection.End)
         }
     ) { entry ->
-//        val arguments = entry.toRoute<Route.BookDetails>()
         val selectedBookViewModel = entry.sharedKoinViewModel<SelectedBookViewModel>(navController)
         val selectedBook by selectedBookViewModel.selectedBook.collectAsStateWithLifecycle()
 

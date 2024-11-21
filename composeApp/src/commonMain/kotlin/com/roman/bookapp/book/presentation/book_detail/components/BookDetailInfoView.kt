@@ -73,7 +73,7 @@ fun ColumnScope.BookDetailInfoView(
             }
         }
 
-        book.numPages?.let { pages ->
+        book.numberOfPagesMedian?.let { pages ->
             TitledContent(
                 title = stringResource(Res.string.pages_title)
             ) {

@@ -16,8 +16,8 @@ class BookListStatePreviewParameterProvider : PreviewParameterProvider<BookListS
         firstPublishYear = null,
         averageRating = 4.58456,
         ratingsCount = 1000,
-        numEditions = 2,
-        numPages = 500
+        numberOfEdition = 2,
+        numberOfPagesMedian = 500
     )
 
     private val book2 = Book(
@@ -30,8 +30,8 @@ class BookListStatePreviewParameterProvider : PreviewParameterProvider<BookListS
         firstPublishYear = null,
         averageRating = 3.156,
         ratingsCount = 1000,
-        numEditions = 2,
-        numPages = 500
+        numberOfEdition = 2,
+        numberOfPagesMedian = 500
     )
 
     private val books = (1..100).map {

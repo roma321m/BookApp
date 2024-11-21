@@ -1,5 +1,8 @@
 package com.roman.bookapp.di
 
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import com.roman.bookapp.book.data.database.DatabaseFactory
+import com.roman.bookapp.book.data.database.FavoriteBookDatabase
 import com.roman.bookapp.book.data.network.KtorRemoteBookDataSource
 import com.roman.bookapp.book.data.network.RemoteBookDataSource
 import com.roman.bookapp.book.data.repository.BookRepository
@@ -20,6 +23,13 @@ val sharedModule = module {
     single { HttpClientFactory.create(engine = get()) }
     singleOf(::KtorRemoteBookDataSource).bind<RemoteBookDataSource>()
     singleOf(::BookRepository).bind<IBookRepository>()
+
+    single {
+        get<DatabaseFactory>().create()
+            .setDriver(BundledSQLiteDriver())
+            .build()
+    }
+    single { get<FavoriteBookDatabase>().favoriteBookDao }
 
     viewModelOf(::BookListViewModel)
     viewModelOf(::BookDetailViewModel)
