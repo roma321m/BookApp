@@ -1,5 +1,7 @@
 package com.roman.bookapp.navigation.routes
 
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -11,8 +13,6 @@ import com.roman.bookapp.book.presentation.book_detail.BookDetailAction
 import com.roman.bookapp.book.presentation.book_detail.BookDetailScreenView
 import com.roman.bookapp.book.presentation.book_detail.BookDetailViewModel
 import com.roman.bookapp.navigation.Route
-import com.roman.bookapp.navigation.animations.HorizontalAnimationDirection
-import com.roman.bookapp.navigation.animations.NavigationAnimation
 import com.roman.bookapp.navigation.util.sharedKoinViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -22,7 +22,14 @@ fun NavGraphBuilder.bookDetailComposable(
 ) {
     composable<Route.BookDetails>(
         enterTransition = {
-            NavigationAnimation.slideInFrom(HorizontalAnimationDirection.End)
+            slideInHorizontally { initialOffsetX ->
+                initialOffsetX
+            }
+        },
+        exitTransition = {
+            slideOutHorizontally { initialOffsetX ->
+                initialOffsetX
+            }
         }
     ) { entry ->
         val selectedBookViewModel = entry.sharedKoinViewModel<SelectedBookViewModel>(navController)

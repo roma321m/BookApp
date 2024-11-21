@@ -8,13 +8,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
@@ -40,6 +40,7 @@ import com.roman.bookapp.book.presentation.book_list.components.BookListView
 import com.roman.bookapp.book.presentation.book_list.components.BookSearchBarView
 import com.roman.bookapp.core.presentation.DarkBlue
 import com.roman.bookapp.core.presentation.DesertWhite
+import com.roman.bookapp.core.presentation.PulseAnimationView
 import com.roman.bookapp.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 
@@ -132,7 +133,9 @@ fun BookListScreenView(
                         when(pageIndex) {
                             0 -> {
                                 if (uiState.isLoading) {
-                                    CircularProgressIndicator()
+                                    PulseAnimationView(
+                                        Modifier.size(60.dp)
+                                    )
                                 } else {
                                     when {
                                         uiState.errorMessages != null -> {

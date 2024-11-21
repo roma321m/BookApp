@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -19,7 +20,6 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -45,6 +45,7 @@ import bookapp.composeapp.generated.resources.remove_from_favorites
 import coil3.compose.rememberAsyncImagePainter
 import com.roman.bookapp.core.presentation.DarkBlue
 import com.roman.bookapp.core.presentation.DesertWhite
+import com.roman.bookapp.core.presentation.PulseAnimationView
 import com.roman.bookapp.core.presentation.SandYellow
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -157,9 +158,6 @@ private fun BookCoverCardView(
             .fillMaxHeight(height)
             .aspectRatio(2 / 3f),
         shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = Color.Transparent
-        ),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 15.dp
         )
@@ -168,7 +166,15 @@ private fun BookCoverCardView(
             targetState = imageLoadResult
         ) { result ->
             when (result) {
-                null -> CircularProgressIndicator()
+                null -> Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    PulseAnimationView(
+                        modifier = Modifier.size(60.dp)
+                    )
+                }
+
                 else -> {
                     Box {
                         Image(

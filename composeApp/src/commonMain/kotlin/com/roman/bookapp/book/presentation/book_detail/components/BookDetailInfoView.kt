@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,6 +26,7 @@ import bookapp.composeapp.generated.resources.pages_title
 import bookapp.composeapp.generated.resources.rating_title
 import bookapp.composeapp.generated.resources.synopsis_title
 import com.roman.bookapp.book.domain.Book
+import com.roman.bookapp.core.presentation.PulseAnimationView
 import com.roman.bookapp.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
@@ -123,7 +124,9 @@ fun ColumnScope.BookDetailInfoView(
     )
 
     if (isLoading) {
-        CircularProgressIndicator()
+        PulseAnimationView(
+            modifier = Modifier.size(60.dp)
+        )
     } else {
         Text(
             modifier = Modifier

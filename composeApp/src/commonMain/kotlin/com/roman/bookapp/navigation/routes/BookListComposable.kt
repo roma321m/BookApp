@@ -1,5 +1,7 @@
 package com.roman.bookapp.navigation.routes
 
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -10,7 +12,6 @@ import com.roman.bookapp.book.presentation.book_list.BookListAction
 import com.roman.bookapp.book.presentation.book_list.BookListScreenView
 import com.roman.bookapp.book.presentation.book_list.BookListViewModel
 import com.roman.bookapp.navigation.Route
-import com.roman.bookapp.navigation.animations.NavigationAnimation
 import com.roman.bookapp.navigation.util.sharedKoinViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -18,9 +19,8 @@ fun NavGraphBuilder.bookListComposable(
     navController: NavController
 ) {
     composable<Route.BookList>(
-        enterTransition = {
-            NavigationAnimation.fadeIntoContainer()
-        }
+        exitTransition = { slideOutHorizontally() },
+        popEnterTransition = { slideInHorizontally() }
     ) { entry ->
         val selectedBookViewModel = entry.sharedKoinViewModel<SelectedBookViewModel>(navController)
         val viewModel = koinViewModel<BookListViewModel>()
