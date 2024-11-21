@@ -1,6 +1,7 @@
 # bookApp
 
-A simple Android application for managing your book collection.
+A simple Compose multiplatform application for managing your book collection.
+Works on iOS, Android, Windows, macOS, and Linux
 
 ## Features
 
@@ -12,7 +13,11 @@ A simple Android application for managing your book collection.
 
 ## Screenshots
 
-(Include some screenshots of your app here)
+# Screenshots
+
+> |                                                                                                                                                                              |                                                                                                                                                                           |                                                                                                                                                                                |
+>|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+>| <img src="https://github.com/roma321m/BookApp/blob/master/readme_pics/Screenshot_20241121_224515.png" alt="alt text" title="Favorites" width="300" height="650" border="10"> | <img src="https://github.com/roma321m/BookApp/blob/master/readme_pics/Screenshot_20241121_224711.png" alt="alt text" title="Search" width="300" height="650" border="10"> | <img src="https://github.com/roma321m/BookApp/blob/master/readme_pics/Screenshot_20241121_224557.png" alt="alt text" title="Description" width="300" height="650" border="10"> |
 
 ## Getting Started
 
