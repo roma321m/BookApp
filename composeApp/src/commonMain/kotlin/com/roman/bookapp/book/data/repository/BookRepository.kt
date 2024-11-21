@@ -11,6 +11,7 @@ import com.roman.bookapp.core.domain.map
 class BookRepository(
     private val remoteBookDataSource: RemoteBookDataSource,
 ): IBookRepository {
+
     override suspend fun searchBooks(query: String): Result<List<Book>, DataError.Remote> {
         return remoteBookDataSource
             .searchBooks(query)
@@ -18,4 +19,11 @@ class BookRepository(
                 responseDto.results.map { it.toBook() }
             }
     }
+
+    override suspend fun getBookDescription(bookId: String): Result<String?, DataError> {
+        return remoteBookDataSource
+            .getBookDetails(bookId)
+            .map { it.description }
+    }
+
 }

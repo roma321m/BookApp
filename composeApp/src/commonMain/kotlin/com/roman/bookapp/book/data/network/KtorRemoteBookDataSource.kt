@@ -1,5 +1,6 @@
 package com.roman.bookapp.book.data.network
 
+import com.roman.bookapp.book.data.dto.BookWorkDto
 import com.roman.bookapp.book.data.dto.SearchResponseDto
 import com.roman.bookapp.core.data.safeCall
 import com.roman.bookapp.core.domain.DataError
@@ -18,7 +19,7 @@ class KtorRemoteBookDataSource(
         query: String,
         resultsLimit: Int?
     ): Result<SearchResponseDto, DataError.Remote> {
-        return safeCall {
+        return safeCall<SearchResponseDto> {
             httpClient.get(
                 urlString = "$BASE_URL/search.json"
             ) {
@@ -33,4 +34,13 @@ class KtorRemoteBookDataSource(
         }
     }
 
+    override suspend fun getBookDetails(
+        bookWorkId: String
+    ): Result<BookWorkDto, DataError.Remote> {
+        return safeCall<BookWorkDto> {
+            httpClient.get(
+                urlString = "$BASE_URL/works/$bookWorkId.json"
+            )
+        }
+    }
 }
