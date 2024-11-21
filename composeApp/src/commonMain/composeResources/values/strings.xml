@@ -10,6 +10,17 @@
     <string name="no_search_results">Oops, there are not any books for you search query</string>
     <string name="no_favorite_books">You don't have any favorite books</string>
 
+    <!-- Book Detail Screen -->
+    <string name="book_cover_title">Book cover</string>
+    <string name="rating_title">Rating</string>
+    <string name="pages_title">Pages</string>
+    <string name="languages_title">Languages</string>
+    <string name="synopsis_title">Synopsis</string>
+    <string name="description_not_available">Description not available</string>
+    <string name="back_button">Back</string>
+    <string name="mark_as_favorite">Mark as favorite</string>
+    <string name="remove_from_favorites">Remove from favorites</string>
+
     <!-- Error Messages -->
     <string name="error_no_storage_access">No storage access</string>
     <string name="error_no_storage_space">No storage space</string>

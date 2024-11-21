@@ -74,7 +74,7 @@ fun BookListItemView(
                     .fillMaxHeight()
                     .weight(1f),
                 title = book.title,
-                authors = book.author,
+                authors = book.authors,
                 averageRating = book.averageRating,
             )
             Icon(
@@ -101,12 +101,12 @@ private fun BookCoverImageView(
         val painter = rememberAsyncImagePainter(
             model = imageUrl,
             onSuccess = {
-                imageLoadResult =
-                    if (it.painter.intrinsicSize.width > 1 && it.painter.intrinsicSize.height > 1) {
-                        Result.success(it.painter)
-                    } else {
-                        Result.failure(Exception("Invalid image size"))
-                    }
+                val size = it.painter.intrinsicSize
+                imageLoadResult = if (size.width > 1 && size.height > 1) {
+                    Result.success(it.painter)
+                } else {
+                    Result.failure(Exception("Invalid image size"))
+                }
             },
             onError = {
                 it.result.throwable.printStackTrace()

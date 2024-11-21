@@ -12,9 +12,9 @@ fun SearchedBookDto.toBook(): Book {
         } else {
             "https://covers.openlibrary.org/b/id/${coverAlternativeKey}-L.jpg"
         },
-        author = authorNames ?: emptyList(),
+        authors = authorNames ?: emptyList(),
         description = null,
-        language = languages ?: emptyList(),
+        languages = languages ?: emptyList(),
         firstPublishYear = firstPublishYear.toString(),
         averageRating = ratingsAverage,
         ratingsCount = ratingsCount,
