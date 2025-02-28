@@ -4,7 +4,7 @@ import com.roman.bookapp.book.domain.Book
 import com.roman.bookapp.core.presentation.UiText
 
 data class BookListState(
-    val searchQuery: String = "Kotlin",
+    val searchQuery: String = "Harry Potter",
     val searchResult: List<Book> = emptyList(),
     val favoriteBooks: List<Book> = emptyList(),
     val isLoading: Boolean = true,
